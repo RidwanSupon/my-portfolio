@@ -1,0 +1,96 @@
+import type { SkillGroup } from '@/lib/types';
+
+export const skillGroups: SkillGroup[] = [
+  {
+    title: 'Business Analysis',
+    description: 'Turning stakeholder intent into something a team can estimate.',
+    skills: [
+      'Requirement Engineering',
+      'Requirement Gathering',
+      'Gap Analysis',
+      'Business Process Analysis',
+      'Business Process Mapping',
+      'Workflow Design',
+      'Stakeholder Management',
+      'Product Strategy',
+      'Digital Transformation',
+    ],
+  },
+  {
+    title: 'Documentation',
+    description: 'Specifications written for the person who has to build the thing.',
+    skills: [
+      'SRS',
+      'BRD',
+      'FRD',
+      'User Stories',
+      'Use Cases',
+      'Acceptance Criteria',
+      'API Documentation',
+      'UML',
+      'Activity Diagrams',
+      'Sequence Diagrams',
+    ],
+  },
+  {
+    title: 'Delivery & Process',
+    description: 'Keeping scope honest from kickoff through release.',
+    skills: [
+      'Agile',
+      'Scrum',
+      'Sprint Planning',
+      'Backlog Prioritisation',
+      'Project Planning',
+      'Development Coordination',
+      'Jira',
+      'Azure DevOps',
+      'ClickUp',
+      'Notion',
+    ],
+  },
+  {
+    title: 'Design & Prototyping',
+    description: 'Making an argument concrete before code is written.',
+    skills: ['Wireframing', 'Figma', 'Prototyping', 'User Flows', 'Information Architecture'],
+  },
+  {
+    title: 'Technical',
+    description: 'Enough depth to keep feasibility estimates grounded.',
+    skills: [
+      'SQL',
+      'MySQL',
+      'PostgreSQL',
+      'REST API',
+      'Swagger',
+      'Postman',
+      'Laravel',
+      'PHP',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'HTML',
+      'CSS',
+      'Tailwind CSS',
+      'Git',
+      'GitHub',
+    ],
+  },
+  {
+    title: 'Quality & Domain',
+    description: 'Verifying the delivered system matches the intent.',
+    skills: [
+      'Quality Assurance',
+      'Functional Testing',
+      'UAT',
+      'Test Case Design',
+      'ERP',
+      'CRM',
+      'Inventory Systems',
+      'Accounting Software',
+      'System Design',
+    ],
+  },
+];
+
+/** Flat list used by the marquee and for SEO keywords. */
+export const allSkills = skillGroups.flatMap((group) => group.skills);

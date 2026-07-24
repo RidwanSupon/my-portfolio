@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    /* #2563EB */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* #3B82F6 */
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    /* #0F172A */
+    --ink: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 19% 45%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 89%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.9rem;
+
+    --glass: 255 255 255 / 0.7;
+    --glass-border: 214 32% 91% / 0.9;
+    --grid-line: 222 47% 11% / 0.05;
+  }
+
+  .dark {
+    /* #020617 */
+    --background: 229 84% 5%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 96%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 229 84% 5%;
+
+    --accent: 213 94% 68%;
+    --accent-foreground: 229 84% 5%;
+
+    --ink: 210 40% 96%;
+
+    --muted: 217 33% 13%;
+    --muted-foreground: 215 20% 62%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 19%;
+    --ring: 217 91% 60%;
+
+    --glass: 2 6 23 / 0.6;
+    --glass-border: 217 33% 22% / 0.8;
+    --grid-line: 210 40% 96% / 0.05;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  ::selection {
+    @apply bg-primary/20;
+  }
+
+  /* Lenis drives scrolling; the native smooth behaviour would fight it. */
+  html.lenis {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgb(var(--glass));
+    border: 1px solid hsl(var(--glass-border));
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+  }
+
+  /*
+   * The blueprint grid. A business analyst's work is turning something vague
+   * into something measured, so the page sits on faint drafting rules that
+   * fade toward the edges — present enough to feel deliberate, quiet enough
+   * to never compete with the type.
+   */
+  .blueprint {
+    background-image:
+      linear-gradient(to right, hsl(var(--grid-line)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+
+  .aurora {
+    background:
+      radial-gradient(40rem 22rem at 15% 0%, hsl(var(--primary) / 0.16), transparent 60%),
+      radial-gradient(34rem 20rem at 85% 10%, hsl(var(--accent) / 0.14), transparent 62%);
+  }
+
+  /* Monospace section index, e.g. "02 / About" — the documentation motif. */
+  .section-index {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px
+           after:origin-right after:scale-x-0 after:bg-current after:transition-transform
+           hover:after:origin-left hover:after:scale-x-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
